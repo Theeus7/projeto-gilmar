@@ -1,6 +1,8 @@
 # ![Logo do Projeto]()
 
 # Titulo
+- SRLP – Sistema de Resumos de Livros em PDF
+
 
 
 ---
@@ -16,13 +18,18 @@
 
 ## 🎯 Objetivos
 
-- 
+- Desenvolver uma aplicação capaz de armazenar livros em PDF, aplicar técnicas de Inteligência Artificial para gerar resumos automáticos e organizados, permitir a pesquisa por título, autor ou gênero, oferecer leitura e download dos resumos, e disponibilizar um painel simples para gerenciamento dos arquivos.
 
 ---
 
 ## 🧠 Inteligência Artificial 
+- Utiliza algoritmos de Processamento de Linguagem Natural (PLN) para compreender o conteúdo dos livros.
 
+- Identifica automaticamente as partes mais relevantes de cada texto.
 
+- Gera resumos coerentes e objetivos, mantendo o sentido original do livro.
+
+- Pode ser treinada com novos textos para melhorar a qualidade dos resumos.
 
 ---
 
@@ -84,11 +91,11 @@
 
 | Nome            | GitHub                                           |
 |-----------------|--------------------------------------------------|
-| Luis Hardt      | [@Luis]() |
+| Luis Hardt      | [@Luis](https://github.com/Luis-Hardt)           |
 | Marcos Antônio  | [@Marcos](https://github.com/MacQueenDev)        |
-| Matheus Ortela  | [@MatheusOrtela](https://github.com/Theeus7)                    |
+| Matheus Ortela  | [@MatheusOrtela](https://github.com/Theeus7)     |                  |
 | Matheus Soares  | [@MatheusSoares](https://github.com/Matheus686)  |
-| Thales Eduardo  | [@Thales]()                  |
+| Thales Eduardo  | [@Thales](https://github.com/Fridayzin)          |
 
 ---
 
