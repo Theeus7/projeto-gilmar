@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Resumo de Livros</title>
+</head>
+<body class="theme--dark">
+  <aside class="sidebar">
+    <nav class="sidebar__menu">
+      <button class="menu__item menu__item--logo">
+        <img
+          data-icon-dark="{{ url_for('static', filename='images/logo-dark.png') }}"
+          data-icon-light="{{ url_for('static', filename='images/logo-light.png') }}"
+          class="menu__logo"
+          alt="Logo">
+      </button>
+      <button class="menu__item">
+        <img
+          data-icon-dark="{{ url_for('static', filename='images/write-dark.png') }}"
+          data-icon-light="{{ url_for('static', filename='images/write-light.png') }}"
+          class="menu__icon"
+          alt="">
+        <span>Novo Resumo</span>
+      </button>
+      <button class="menu__item">
+        <img
+          data-icon-dark="{{ url_for('static', filename='images/history-dark.png') }}"
+          data-icon-light="{{ url_for('static', filename='images/history-light.png') }}"
+          class="menu__icon"
+          alt="">
+        <span>Histórico</span>
+      </button>
+      <button class="menu__item">
+        <img
+          data-icon-dark="{{ url_for('static', filename='images/info-dark.png') }}"
+          data-icon-light="{{ url_for('static', filename='images/info-light.png') }}"
+          class="menu__icon"
+          alt="">
+        <span>Sobre</span>
+      </button>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div class="theme-switch">
+        <div class="theme-switch__info">
+          <img
+            data-icon-dark="{{ url_for('static', filename='images/theme-dark.png') }}"
+            data-icon-light="{{ url_for('static', filename='images/theme-light.png') }}"
+            class="menu__icon"
+            alt="">
+          <label for="theme-toggle">Modo Escuro</label>
+        </div>
+        <div class="theme-switch__toggle" id="theme-toggle"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <input type="text"class="main__input" placeholder="Digite o título do livro aqui...">
+  </main>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
