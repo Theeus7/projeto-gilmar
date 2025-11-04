@@ -1,13 +1,18 @@
 import sqlite3
+import os
 
-# Nome do banco
-conn = sqlite3.connect('resumos.db')
+# Caminho absoluto do banco (fica na raiz do projeto)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, 'resumos.db')
+
+# Conexão com o banco
+conn = sqlite3.connect(DB_PATH)
 cursor = conn.cursor()
 
-# Habilita chaves estrangeiras (boa prática, mesmo com 1 tabela)
+# Habilita chaves estrangeiras (boa prática)
 cursor.execute('PRAGMA foreign_keys = ON;')
 
-# Remove tabela se já existir (útil ao testar)
+# Remove tabela se já existir (útil durante testes)
 cursor.execute('DROP TABLE IF EXISTS livros')
 
 # Cria a tabela principal
@@ -23,18 +28,8 @@ CREATE TABLE livros (
 )
 ''')
 
-# Dados de exemplo (opcional)
-cursor.execute('''
-INSERT INTO livros (autor, editora, titulo, arquivo_pdf, resumo)
-VALUES (?, ?, ?, ?, ?)
-''', (
-    "Machado de Assis",
-    "Editora Garnier",
-    "Dom Casmurro",
-    "uploads/dom_casmurro.pdf",
-    "Romance clássico que aborda ciúme, memória e ambiguidade narrativa."
-))
-
+# Confirma e fecha a conexão
 conn.commit()
 conn.close()
-print("✅ Banco de dados criado com sucesso: resumos.db")
+
+print(f"✅ Banco de dados criado com sucesso em: {DB_PATH}")

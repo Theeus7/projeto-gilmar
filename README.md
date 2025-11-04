@@ -1,20 +1,8 @@
-# ![Logo do Projeto]()
+# ![Logo do Projeto](static/images/logo-light.png)
 
 # Titulo
 - SRLP – Sistema de Resumos de Livros em PDF
 
-
-
----
-
-## 🚀 Tecnologias Utilizadas
-
-- **Python** (Flask)
-- **SQLite3**
-- **HTML/CSS** (páginas responsivas)
-- **API de IA**
-
----
 
 ## 🎯 Objetivos
 
@@ -33,21 +21,6 @@
 
 ---
 
-## 💻 Funcionalidades
-
-- Cadastro e listagem de livros e resumos.  
-- Armazenamento local com **SQLite**.  
-- Interface simples feita com HTML, CSS e JavaScript.  
-- API REST criada com Flask e organizada por Blueprints. 
-
----
-
-# 📚 PROJETO GILMAR – Sistema de Resumos com Flask e SQLite
-
-Este projeto é uma aplicação web simples desenvolvida com **Flask** e **SQLite** que permite cadastrar, listar e gerenciar resumos de livros.  
-O objetivo é criar um sistema leve e funcional para testes locais e aprendizado de desenvolvimento web com Python.
-
----
 
 ## 🚀 Funcionalidades
 
