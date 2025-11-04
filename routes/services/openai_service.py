@@ -1,0 +1,15 @@
+import google.generativeai as genai
+from config import Config
+
+class GeminiService:
+    def __init__(self):
+        genai.configure(api_key=Config.GEMINI_API_KEY)
+        self.model = genai.GenerativeModel('gemini-2.5-flash')
+    
+    def generate_summary(self, text: str) -> str:
+        try:
+            prompt = f"Você é um assistente especializado em criar resumos concisos e informativos de livros. Faça um resumo detalhado do seguinte texto de livro:\n\n{text}"
+            response = self.model.generate_content(prompt)
+            return response.text
+        except Exception as e:
+            raise Exception(f"Erro ao gerar resumo: {str(e)}")
