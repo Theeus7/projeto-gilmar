@@ -1,22 +1,15 @@
 import os
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
-<<<<<<< HEAD
 from routes.services.pdf_service import PDFService
-from routes.services.openai_service import GeminiService
+from routes.services.gemini_service import GeminiService
 from config import Config
 import sqlite3
 import os
-=======
-from services.pdf_service import PDFService
-from services.openai_service import GeminiService
-from config import Config
->>>>>>> 0eade81c7ef95c78542c132cb905eb3790e63584
 
 book_bp = Blueprint('books', __name__)
 pdf_service = PDFService()
 
-<<<<<<< HEAD
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, '..', 'resumos.db')
 
@@ -25,8 +18,6 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row  # permite acessar colunas por nome
     return conn
 
-=======
->>>>>>> 0eade81c7ef95c78542c132cb905eb3790e63584
 @book_bp.route('/upload', methods=['POST'])
 def upload_book():
     if 'file' not in request.files:
@@ -37,12 +28,9 @@ def upload_book():
     if not pdf_service.validate_pdf(file):
         return jsonify({'error': 'Arquivo deve ser um PDF'}), 400
     
-<<<<<<< HEAD
     # Inicializa file_path fora do try para garantir que esteja acessível no except
     file_path = None
     
-=======
->>>>>>> 0eade81c7ef95c78542c132cb905eb3790e63584
     try:
         filename = secure_filename(file.filename)
         file_path = os.path.join(Config.UPLOAD_FOLDER, filename)
@@ -52,17 +40,13 @@ def upload_book():
         
         text = pdf_service.extract_text(file_path)
         if not text:
-<<<<<<< HEAD
             # Garante que o arquivo temporário seja removido em caso de falha na extração
             os.remove(file_path)
-=======
->>>>>>> 0eade81c7ef95c78542c132cb905eb3790e63584
             return jsonify({'error': 'Não foi possível extrair texto do PDF'}), 400
         
         gemini_service = GeminiService()
         summary = gemini_service.generate_summary(text)
         
-<<<<<<< HEAD
         # --- Lógica para salvar no banco de dados (SIMPLIFICADA) ---
         titulo_livro = os.path.splitext(filename)[0] # Usa o nome do arquivo sem a extensão .pdf
 
@@ -81,8 +65,6 @@ def upload_book():
             os.remove(file_path) # Remove o arquivo temporário antes de retornar o erro
             return jsonify({'error': f"Erro ao salvar o resumo no histórico: {str(db_e)}"}), 500
 
-=======
->>>>>>> 0eade81c7ef95c78542c132cb905eb3790e63584
         os.remove(file_path)  # Remove arquivo após processamento
         
         return jsonify({
@@ -91,7 +73,6 @@ def upload_book():
         }), 200
         
     except Exception as e:
-<<<<<<< HEAD
         # Garante que o arquivo temporário seja removido em caso de qualquer outra exceção
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -131,10 +112,3 @@ def get_history():
             "success": False,
             "error": str(e)
         }), 500
-=======
-        return jsonify({'error': str(e)}), 500
-
-@book_bp.route('/health', methods=['GET'])
-def health_check():
-    return jsonify({'status': 'OK'}), 200
->>>>>>> 0eade81c7ef95c78542c132cb905eb3790e63584

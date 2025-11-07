@@ -1,18 +1,5 @@
-<<<<<<< HEAD
 Flask==3.0.3
 Flask-Cors==4.0.1
 python-dotenv==1.0.1
 PyPDF2==3.0.1
 google-generativeai==0.7.2
-=======
-Flask==2.3.3
-Flask-CORS==4.0.0
-<<<<<<< HEAD
-PyPDF2==3.0.1
-python-dotenv==1.0.0
-=======
-google-generativeai==0.7.2
-PyPDF2==3.0.1
-python-dotenv==1.0.0
->>>>>>> origin/backend-b
->>>>>>> 0eade81c7ef95c78542c132cb905eb3790e63584

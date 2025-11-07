@@ -1,122 +1,145 @@
 # ![Logo do Projeto](static/images/logo-light.png)
 
-# Titulo
-- SRLP – Sistema de Resumos de Livros em PDF
-
+# SRLP – Sistema de Resumos de Livros em PDF
 
 ## 🎯 Objetivos
 
-- Desenvolver uma aplicação capaz de armazenar livros em PDF, aplicar técnicas de Inteligência Artificial para gerar resumos automáticos e organizados, permitir a pesquisa por título, autor ou gênero, oferecer leitura e download dos resumos, e disponibilizar um painel simples para gerenciamento dos arquivos.
+Desenvolver uma aplicação capaz de armazenar livros em PDF, aplicar técnicas de Inteligência Artificial para gerar resumos automáticos e organizados, permitir a pesquisa por título, autor ou gênero, oferecer leitura e download dos resumos, e disponibilizar um painel simples para gerenciamento dos arquivos.
 
----
+## 🧠 Inteligência Artificial
 
-## 🧠 Inteligência Artificial 
-- Utiliza algoritmos de Processamento de Linguagem Natural (PLN) para compreender o conteúdo dos livros.
-
-- Identifica automaticamente as partes mais relevantes de cada texto.
-
-- Gera resumos coerentes e objetivos, mantendo o sentido original do livro.
-
-- Pode ser treinada com novos textos para melhorar a qualidade dos resumos.
-
----
-
+- Utiliza algoritmos de Processamento de Linguagem Natural (PLN) para compreender o conteúdo dos livros
+- Identifica automaticamente as partes mais relevantes de cada texto
+- Gera resumos coerentes e objetivos, mantendo o sentido original do livro
+- Integração com Google Gemini AI para processamento avançado de texto
 
 ## 🚀 Funcionalidades
 
-- Cadastro e listagem de livros e resumos.  
-- Armazenamento local com **SQLite**.  
-- Interface simples feita com HTML, CSS e JavaScript.  
-- API REST criada com Flask e organizada por Blueprints.  
-
----
+- Upload e processamento de livros em PDF
+- Geração automática de resumos usando IA
+- Histórico de livros processados
+- Interface responsiva com tema claro/escuro
+- API REST organizada com Flask Blueprints
+- Armazenamento local com SQLite
 
 ## ⚙️ Tecnologias Utilizadas
 
 - **Python 3**
-- **Flask**
-- **Flask-CORS**
-- **SQLite3**
-- **HTML / CSS / JS**
+- **Flask** - Framework web
+- **Flask-CORS** - Controle de CORS
+- **SQLite3** - Banco de dados
+- **PyPDF2** - Processamento de PDFs
+- **Google Generative AI** - IA para geração de resumos
+- **HTML / CSS / JavaScript** - Frontend
+- **Python-dotenv** - Gerenciamento de variáveis de ambiente
 
----
+## ✅ Instalação e Execução
 
-## ✅ Rodando Localmente
-
-Siga os passos abaixo para executar o projeto em sua máquina local:
-
----
-
-### 1 Clonar o repositório:
+### 1. Clonar o repositório
 ```bash
 git clone https://github.com/Matheus686/PROJETO-GILMAR.git
 cd PROJETO-GILMAR
+```
 
-### 2 Criar e ativar o ambiente virtual:
+### 2. Criar e ativar ambiente virtual
 
--(Windows) 
+**Windows:**
+```bash
 python -m venv venv
 venv\Scripts\activate
+```
 
--(Linux/Mac) 
+**Linux/Mac:**
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
-### 3 CInstalar as dependências:
+### 3. Instalar dependências
+```bash
+pip install -r requirements.txt
+```
 
-- pip install -r requirements.txt
+### 4. Configurar variáveis de ambiente
+Crie um arquivo `.env` na raiz do projeto:
+```env
+GEMINI_API_KEY=sua_chave_api_aqui
+```
 
-### 4 Criar o banco de dados:
+### 5. Criar banco de dados
+```bash
+python create_db.py
+```
 
-- python create_db.py
+### 6. Executar aplicação
+```bash
+python app.py
+```
 
-### 5 Executar a aplicação Flask:
+### 7. Acessar no navegador
+```
+http://127.0.0.1:5000
+```
 
-- python app.py
-
-### 6 Acessar no navegador:
-
-- http://127.0.0.1:5000
-
-
-  
 ## 📁 Estrutura do Projeto
 
 ```
 PROJETO-GILMAR/
 │
-├── app.py                     ← seu arquivo Flask principal
-├── config.py                  ← suas configurações Flask (já existe)
-├── create_db.py               ← Banco de dados. 
+├── routes/
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── gemini_service.py
+│   │   └── pdf_service.py
+│   ├── __init__.py
+│   └── book_routes.py
 │
-│
-├── static/                    ← mantém igual
+├── static/
+│   ├── css/
+│   │   └── styles.css
 │   ├── images/
-│   │   ├── history-dark.png
-│   │   ├── history-light.png
-│   │   ├── ...
+│   │   ├── logo-light.png
+│   │   ├── logo-dark.png
+│   │   └── ...
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── history.js
+│   │   ├── sidebar.js
+│   │   └── themes.js
 │   ├── main.js
 │   └── styles.css
 │
 ├── templates/
-│   └── index.html
+│   ├── index.html
+│   └── history.html
 │
+├── uploads/
+├── .env
+├── .gitignore
+├── app.py
+├── config.py
+├── create_db.py
 ├── requirements.txt
+├── resumos.db
 └── README.md
-
 ```
 
----
+## 📚 API Endpoints
+
+### Livros
+- `POST /api/books/upload` - Upload de PDF e geração de resumo
+- `GET /api/books/history` - Listar histórico de livros
+- `GET /api/books/summary/<id>` - Obter resumo específico
 
 ## 👥 Equipe
 
 | Nome            | GitHub                                           |
 |-----------------|--------------------------------------------------|
-| Luis Hardt      | [@Luis](https://github.com/Luis-Hardt)           |
-| Marcos Antônio  | [@Marcos](https://github.com/MacQueenDev)        |
-| Matheus Ortela  | [@MatheusOrtela](https://github.com/Theeus7)     |                  |
-| Matheus Soares  | [@MatheusSoares](https://github.com/Matheus686)  |
-| Thales Eduardo  | [@Thales](https://github.com/Fridayzin)          |
+| Luis Hardt      | [@Luis-Hardt](https://github.com/Luis-Hardt)    |
+| Marcos Antônio  | [@MacQueenDev](https://github.com/MacQueenDev)   |
+| Matheus Ortela  | [@Theeus7](https://github.com/Theeus7)          |
+| Matheus Soares  | [@Matheus686](https://github.com/Matheus686)    |
+| Thales Eduardo  | [@Fridayzin](https://github.com/Fridayzin)      |
 
 ---
 
@@ -126,7 +149,7 @@ PROJETO-GILMAR/
 - **Curso:** Ciência da Computação  
 - **Semestre:** 3º e 4º
 - **Período:** Noite  
-- **Professora orientador:** Gilmar Alexandre Do Prado Yahuita  
+- **Professor Orientador:** Gilmar Alexandre Do Prado Yahuita  
 
 ---
 
