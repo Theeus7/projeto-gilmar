@@ -1,68 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <title>Resumo de Livros</title>
-</head>
-<body class="theme--dark">
-  <aside class="sidebar">
-    <nav class="sidebar__menu">
-      <button class="menu__item menu__item--logo">
-        <img
-          data-icon-dark="{{ url_for('static', filename='images/logo-dark.png') }}"
-          data-icon-light="{{ url_for('static', filename='images/logo-light.png') }}"
-          class="menu__logo"
-          alt="Logo">
-      </button>
-      <button class="menu__item">
-        <img
-          data-icon-dark="{{ url_for('static', filename='images/write-dark.png') }}"
-          data-icon-light="{{ url_for('static', filename='images/write-light.png') }}"
-          class="menu__icon"
-          alt="">
-        <span>Novo Resumo</span>
-      </button>
-      <button class="menu__item">
-        <img
-          data-icon-dark="{{ url_for('static', filename='images/history-dark.png') }}"
-          data-icon-light="{{ url_for('static', filename='images/history-light.png') }}"
-          class="menu__icon"
-          alt="">
-        <span>Histórico</span>
-      </button>
-      <button class="menu__item">
-        <img
-          data-icon-dark="{{ url_for('static', filename='images/info-dark.png') }}"
-          data-icon-light="{{ url_for('static', filename='images/info-light.png') }}"
-          class="menu__icon"
-          alt="">
-        <span>Sobre</span>
-      </button>
-    </nav>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/styles.css">
 
-    <div class="sidebar__footer">
-      <div class="theme-switch">
-        <div class="theme-switch__info">
-          <img
-            data-icon-dark="{{ url_for('static', filename='images/theme-dark.png') }}"
-            data-icon-light="{{ url_for('static', filename='images/theme-light.png') }}"
-            class="menu__icon"
-            alt="">
-          <label for="theme-toggle">Modo Escuro</label>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    >
+
+    <title>API de IA para Resumo de Livros</title>
+  </head>
+
+  <body class="theme--dark">
+    <aside class="sidebar">
+      <nav class="sidebar__menu">
+        <div class="sidebar__header">
+          <div class="sidebar__logo-container">
+            <img
+              data-icon-dark="/static/images/logo-dark.png"
+              data-icon-light="/static/images/logo-light.png"
+              class="menu__logo"
+              alt="Logo"
+            >
+          </div>
+
+          <button class="sidebar__toggle" id="sidebar-toggle">
+            <img
+              data-icon-dark="/static/images/collapse-dark.png"
+              data-icon-light="/static/images/collapse-light.png"
+              class="menu__icon"
+            >
+          </button>
         </div>
-        <div class="theme-switch__toggle" id="theme-toggle"></div>
+
+        <button class="menu__item" id="main-button">
+          <img
+            data-icon-dark="/static/images/write-dark.png"
+            data-icon-light="/static/images/write-light.png"
+            class="menu__icon"
+            alt=""
+          >
+          <span>Novo Resumo</span>
+        </button>
+
+        <button class="menu__item" id="history-button">
+          <img
+            data-icon-dark="/static/images/history-dark.png"
+            data-icon-light="/static/images/history-light.png"
+            class="menu__icon"
+            alt=""
+          >
+          <span>Histórico</span>
+        </button>
+
+        <button class="menu__item" id="about-button">
+          <img
+            data-icon-dark="/static/images/info-dark.png"
+            data-icon-light="/static/images/info-light.png"
+            class="menu__icon"
+            alt=""
+          >
+          <span>Sobre</span>
+        </button>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="theme-switch">
+          <div class="theme-switch__info">
+            <img
+              data-icon-dark="/static/images/theme-dark.png"
+              data-icon-light="/static/images/theme-light.png"
+              class="menu__icon"
+              alt=""
+            >
+            <label for="theme-toggle">Modo Escuro</label>
+          </div>
+          <div class="theme-switch__toggle" id="theme-toggle"></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+      <div class="upload-area">
+        <label for="file-upload" class="upload__label">
+          Selecione um arquivo PDF para gerar o resumo
+        </label>
+
+        <input
+          type="file"
+          id="file-upload"
+          class="upload__input"
+          accept=".pdf"
+        >
+
+        <button class="upload__button" id="submit-button">
+          Gerar Resumo
+        </button>
+      </div>
+    </main>
+
+    <div class="loader-area" id="loader-area">
+      <div class="loader"></div>
+    </div>
+
+    <div class="result-area" id="result-area">
+      <div class="result-card">
+        <h2>Resumo Gerado</h2>
+        <p id="result-text">
+          O resumo aparecerá aqui após o processamento do PDF.
+        </p>
+        <button class="upload__button" id="back-button">
+          Novo Resumo
+        </button>
       </div>
     </div>
-  </aside>
 
-  <main class="main">
-    <input type="text"class="main__input" placeholder="Digite o título do livro aqui...">
-  </main>
-
-  <script src="{{ url_for('static', filename='main.js') }}"></script>
-</body>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/themes.js"></script>
+    <script src="/static/js/sidebar.js"></script>
+  </body>
 </html>
