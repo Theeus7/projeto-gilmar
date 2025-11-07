@@ -1,20 +1,8 @@
-# ![Logo do Projeto]()
+# ![Logo do Projeto](static/images/logo-light.png)
 
 # Titulo
 - SRLP – Sistema de Resumos de Livros em PDF
 
-
-
----
-
-## 🚀 Tecnologias Utilizadas
-
-- **Python** (Flask)
-- **SQLite3**
-- **HTML/CSS** (páginas responsivas)
-- **API de IA**
-
----
 
 ## 🎯 Objetivos
 
@@ -33,57 +21,90 @@
 
 ---
 
-## 💻 Funcionalidades
 
-- Cadastro e login de usuários.
-- Compra de ingressos com datas e preços reais.
-- Registro completo de logs por sessão.
-- Dashboards interativos para sessões e compras.
-- Detecção de anomalias com IA.
-- Exportação de dados para CSV e Excel.
+## 🚀 Funcionalidades
+
+- Cadastro e listagem de livros e resumos.  
+- Armazenamento local com **SQLite**.  
+- Interface simples feita com HTML, CSS e JavaScript.  
+- API REST criada com Flask e organizada por Blueprints.  
 
 ---
 
-## 🧪 Execução Local
+## ⚙️ Tecnologias Utilizadas
 
-1. 
+- **Python 3**
+- **Flask**
+- **Flask-CORS**
+- **SQLite3**
+- **HTML / CSS / JS**
 
-2. **Instale as dependências do projeto:**  
+---
+
+## ✅ Rodando Localmente
+
+Siga os passos abaixo para executar o projeto em sua máquina local:
+
+---
+
+### 1 Clonar o repositório:
+```bash
+git clone https://github.com/Matheus686/PROJETO-GILMAR.git
+cd PROJETO-GILMAR
+
+### 2 Criar e ativar o ambiente virtual:
+
+-(Windows) 
+python -m venv venv
+venv\Scripts\activate
+
+-(Linux/Mac) 
+python3 -m venv venv
+source venv/bin/activate
+
+### 3 CInstalar as dependências:
+
+- pip install -r requirements.txt
+
+### 4 Criar o banco de dados:
+
+- python create_db.py
+
+### 5 Executar a aplicação Flask:
+
+- python app.py
+
+### 6 Acessar no navegador:
+
+- http://127.0.0.1:5000
+
+
   
 ## 📁 Estrutura do Projeto
 
 ```
-├── app.py                      # Backend Flask
-├── database.db                 # Banco de dados SQLite
-├── static/                     # Estilos CSS
-├── templates/                  # Páginas HTML (login, cadastro, comprar)
-├── dashboards_melhorados/      # Notebooks com IA e visualizações
-│   ├── dashboard_gradio_ingressos.ipynb
-│   └── dashboard_logs_interativo_com_anomalias.ipynb
-    ├── pipeline_logs_anomalias_ia_novo.ipynb
-│   ├── pipeline_logs_ingressos_atualizado.ipynb
-├── imagem/                    # Imagens utilizadas no README
+PROJETO-GILMAR/
+│
+├── app.py                     ← seu arquivo Flask principal
+├── config.py                  ← suas configurações Flask (já existe)
+├── create_db.py               ← Banco de dados. 
+│
+│
+├── static/                    ← mantém igual
+│   ├── images/
+│   │   ├── history-dark.png
+│   │   ├── history-light.png
+│   │   ├── ...
+│   ├── main.js
+│   └── styles.css
+│
+├── templates/
+│   └── index.html
+│
+├── requirements.txt
+└── README.md
+
 ```
-
----
-
-## 📸 Demonstração Visual
-
-### 💡 Plataforma
-
-- Página inicial 
-- ![Tela Inicial](imagem/telaInicial.png)
-
-- Cadastro
-- ![Cadastro](imagem/cadastro.png)
-
- - Login 
-- ![Login](imagem/login.png)
-
-- Listagem e compra de ingressos
-- ![Tela de Compras](imagem/telaCompras.png)
-
-
 
 ---
 
