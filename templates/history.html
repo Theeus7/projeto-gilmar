@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <title>Histórico de Resumos</title>
+</head>
+<body class="theme--dark">
+  <aside class="sidebar">
+    <nav class="sidebar__menu">
+      <div class="sidebar__header">
+        <div class="sidebar__logo-container">
+          <img data-icon-dark="/static/images/logo-dark.png" data-icon-light="/static/images/logo-light.png" class="menu__logo" alt="Logo">
+        </div>
+            
+        <button class="sidebar__toggle" id="sidebar-toggle">
+          <img data-icon-dark="/static/images/collapse-dark.png" data-icon-light="/static/images/collapse-light.png" class="menu__icon">
+        </button>
+      </div>
+
+      <button class="menu__item" id="main-button">
+        <img data-icon-dark="/static/images/write-dark.png" data-icon-light="/static/images/write-light.png" class="menu__icon" alt="">
+        <span>Novo Resumo</span>
+      </button>
+
+      <button class="menu__item" id="history-button">
+        <img data-icon-dark="/static/images/history-dark.png" data-icon-light="/static/images/history-light.png" class="menu__icon" alt="">
+        <span>Histórico</span>
+      </button>
+
+      <button class="menu__item" id="about-button">
+        <img data-icon-dark="/static/images/info-dark.png" data-icon-light="/static/images/info-light.png" class="menu__icon" alt="">
+        <span>Sobre</span>
+      </button>
+    </nav>
+
+
+    <div class="sidebar__footer">
+      <div class="theme-switch">
+        <div class="theme-switch__info">
+          <img data-icon-dark="/static/images/theme-dark.png" data-icon-light="/static/images/theme-light.png" class="menu__icon" alt="">
+          <label for="theme-toggle">Modo Escuro</label>
+        </div>
+
+        <div class="theme-switch__toggle" id="theme-toggle"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <h1>Histórico de Resumos</h1>
+    <div id="history-container" class="history-container">
+    </div>
+  </main>
+
+  <script src="/static/js/themes.js"></script>
+  <script src="/static/js/history.js"></script>
+  <script src="/static/js/sidebar.js"></script>
+</body>
+</html>
